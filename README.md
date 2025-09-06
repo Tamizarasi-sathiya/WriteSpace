@@ -1,7 +1,4 @@
-<img width="1633" height="1031" alt="image" src="https://github.com/user-attachments/assets/102e433c-f27f-432f-a994-c7a8e6c8cf05" />
-<img width="1617" height="942" alt="image" src="https://github.com/user-attachments/assets/aedf9e64-a54b-4e38-9b08-a838e97dd750" />
-<img width="1623" height="804" alt="image" src="https://github.com/user-attachments/assets/68461982-29b8-4f29-90a6-5d09e724928e" />
-<img width="1593" height="884" alt="image" src="https://github.com/user-attachments/assets/9d915f23-407c-461b-92a2-4bf36f18ac1e" />
+<img width="1625" height="963" alt="image" src="https://github.com/user-attachments/assets/eede4c2b-6bb6-4d8e-8950-2155c7aec958" />
 
 # 🪄 Writespace
 
@@ -27,6 +24,12 @@ A modern full-stack blog application with a cozy pastel aesthetic. **Writespace*
 **Deployment:** Vercel
 
 ---
+
+## Screenshots
+<img width="1625" height="963" alt="image" src="https://github.com/user-attachments/assets/eede4c2b-6bb6-4d8e-8950-2155c7aec958" />
+<img width="1617" height="942" alt="image" src="https://github.com/user-attachments/assets/aedf9e64-a54b-4e38-9b08-a838e97dd750" />
+<img width="1623" height="804" alt="image" src="https://github.com/user-attachments/assets/68461982-29b8-4f29-90a6-5d09e724928e" />
+<img width="1593" height="884" alt="image" src="https://github.com/user-attachments/assets/9d915f23-407c-461b-92a2-4bf36f18ac1e" />
 
 ## 🚀 Getting Started
 
