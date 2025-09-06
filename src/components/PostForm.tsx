@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
 import { createPostAction, updatePostAction } from '@/actions/posts';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -30,7 +31,7 @@ export default function PostForm({ post }: PostFormProps) {
   const isEditing = !!post;
   const action = isEditing ? updatePostAction.bind(null, post.id) : createPostAction;
 
-  const [state, formAction] = useFormState(action, { message: '' });
+  const [state, formAction] = useActionState(action, { message: '' });
   const { toast } = useToast();
 
   useEffect(() => {
