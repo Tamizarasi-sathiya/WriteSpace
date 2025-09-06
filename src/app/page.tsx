@@ -78,11 +78,13 @@ export default async function Home() {
         ) : (
           <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-200px)]">
             <div className="text-center py-20 bg-card/30 backdrop-blur-sm border-2 border-dashed rounded-2xl w-full max-w-2xl animate-fade-in">
-              <h2 className="text-2xl font-semibold mb-2">No posts yet.</h2>
-              <p className="text-muted-foreground mb-4">Be the first one to create a post!</p>
-              <Link href="/posts/new">
-                <Button>Create New Post</Button>
-              </Link>
+              <h2 className="text-2xl font-semibold mb-2 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>No posts yet.</h2>
+              <p className="text-muted-foreground mb-4 animate-slide-in-up" style={{ animationDelay: '0.3s' }}>Be the first one to create a post!</p>
+              <div className="animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
+                <Link href="/posts/new">
+                  <Button>Create New Post</Button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
