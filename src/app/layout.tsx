@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/Header';
 import { cn } from '@/lib/utils';
 import { Inter } from 'next/font/google';
+import React from 'react';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
