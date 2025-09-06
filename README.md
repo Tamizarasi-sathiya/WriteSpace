@@ -1,4 +1,7 @@
-<img width="1104" height="780" alt="image" src="https://github.com/user-attachments/assets/e32b8101-4bd4-460c-bd5c-eace65d158c1" />
+<img width="1633" height="1031" alt="image" src="https://github.com/user-attachments/assets/102e433c-f27f-432f-a994-c7a8e6c8cf05" />
+<img width="1617" height="942" alt="image" src="https://github.com/user-attachments/assets/aedf9e64-a54b-4e38-9b08-a838e97dd750" />
+<img width="1623" height="804" alt="image" src="https://github.com/user-attachments/assets/68461982-29b8-4f29-90a6-5d09e724928e" />
+<img width="1593" height="884" alt="image" src="https://github.com/user-attachments/assets/9d915f23-407c-461b-92a2-4bf36f18ac1e" />
 
 # 🪄 Writespace
 
