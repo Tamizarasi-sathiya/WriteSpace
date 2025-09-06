@@ -11,11 +11,11 @@ export default async function Home() {
   return (
     <div className="relative scroll-smooth">
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-center p-4 relative">
-        <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10">
-          <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-primary via-teal-400 to-accent mb-4">
+        <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-primary via-teal-400 to-accent mb-4 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
             Welcome to PostCraft
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
             Explore a collection of insightful articles and stories. Create, share, and discover content that matters.
           </p>
         </div>
@@ -26,11 +26,11 @@ export default async function Home() {
 
       <section id="features" className="min-h-screen container mx-auto py-16 md:py-24 flex flex-col items-center justify-center">
         <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Why PostCraft?</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">We provide the tools to make your blogging experience seamless and enjoyable.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-slide-in-up">Why PostCraft?</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto animate-slide-in-up" style={{ animationDelay: '0.2s' }}>We provide the tools to make your blogging experience seamless and enjoyable.</p>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
-            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center">
+            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center animate-slide-in-up" style={{ animationDelay: '0.3s' }}>
                 <CardHeader>
                     <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
                         <BrainCircuit className="w-8 h-8" />
@@ -41,7 +41,7 @@ export default async function Home() {
                     <p className="text-muted-foreground">Never run out of ideas. Get AI-powered topic suggestions to keep your content fresh and engaging.</p>
                 </CardContent>
             </Card>
-            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center">
+            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
                 <CardHeader>
                     <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
                         <Edit className="w-8 h-8" />
@@ -52,7 +52,7 @@ export default async function Home() {
                     <p className="text-muted-foreground">A clean and intuitive editor makes it easy to write, edit, and publish your posts.</p>
                 </CardContent>
             </Card>
-            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center">
+            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center animate-slide-in-up" style={{ animationDelay: '0.5s' }}>
                 <CardHeader>
                     <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
                         <Palette className="w-8 h-8" />
@@ -69,13 +69,15 @@ export default async function Home() {
       <section id="content" className="min-h-screen py-16 md:py-24">
         {posts.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 container mx-auto">
-            {posts.map((post) => (
-              <PostCard key={post.id} post={post} />
+            {posts.map((post, i) => (
+              <div key={post.id} className="animate-slide-in-up" style={{ animationDelay: `${0.2 * (i + 1)}s` }}>
+                <PostCard post={post} />
+              </div>
             ))}
           </div>
         ) : (
           <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-200px)]">
-            <div className="text-center py-20 bg-card/30 backdrop-blur-sm border-2 border-dashed rounded-2xl w-full max-w-2xl">
+            <div className="text-center py-20 bg-card/30 backdrop-blur-sm border-2 border-dashed rounded-2xl w-full max-w-2xl animate-fade-in">
               <h2 className="text-2xl font-semibold mb-2">No posts yet.</h2>
               <p className="text-muted-foreground mb-4">Be the first one to create a post!</p>
               <Link href="/posts/new">
