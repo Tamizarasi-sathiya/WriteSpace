@@ -81,9 +81,6 @@ export default async function Home() {
             <div data-speed="-0.2" className="absolute top-[80vh] left-[5vw] opacity-15">
               <MadhubaniBird className="w-48 h-48 text-primary/80 -rotate-[15deg] scale-x-[-1]" />
             </div>
-             <div data-speed="-0.15" className="absolute top-[160vh] right-[12vw] opacity-15">
-              <MadhubaniFlower className="w-40 h-40 text-accent/80 rotate-[-30deg]" />
-            </div>
         </div>
       </ParallaxWrapper>
 
