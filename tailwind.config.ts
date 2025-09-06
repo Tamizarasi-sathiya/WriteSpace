@@ -113,7 +113,7 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
-        'rotate': {
+        rotate: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
@@ -125,7 +125,7 @@ export default {
         'slide-in-up': 'slide-in-up 0.8s ease-out forwards',
         'blur-in': 'blur-in 0.8s ease-out forwards',
         'gradient-pan': 'gradient-pan 3s ease-in-out infinite',
-        'rotate': 'rotate 4s linear infinite',
+        rotate: 'rotate 4s linear infinite',
       },
     },
   },

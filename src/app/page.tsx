@@ -108,7 +108,7 @@ export default async function Home() {
         </AnimatedSection>
         <div className="grid gap-8 md:grid-cols-3">
             <AnimatedSection animation="blur-in" delay={0.1}>
-              <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center h-full animated-gradient-border transition-transform duration-300 hover:scale-105">
+              <Card className="bg-card/80 backdrop-blur-md text-center h-full animated-gradient-border transition-transform duration-300 hover:scale-105">
                   <CardHeader>
                       <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
                           <BrainCircuit className="w-8 h-8" />
@@ -121,7 +121,7 @@ export default async function Home() {
               </Card>
             </AnimatedSection>
             <AnimatedSection animation="blur-in" delay={0.2}>
-              <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center h-full animated-gradient-border transition-transform duration-300 hover:scale-105">
+              <Card className="bg-card/80 backdrop-blur-md text-center h-full animated-gradient-border transition-transform duration-300 hover:scale-105">
                   <CardHeader>
                       <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
                           <Edit className="w-8 h-8" />
@@ -134,7 +134,7 @@ export default async function Home() {
               </Card>
             </AnimatedSection>
             <AnimatedSection animation="blur-in" delay={0.3}>
-              <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center h-full animated-gradient-border transition-transform duration-300 hover:scale-105">
+              <Card className="bg-card/80 backdrop-blur-md text-center h-full animated-gradient-border transition-transform duration-300 hover:scale-105">
                   <CardHeader>
                       <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
                           <Palette className="w-8 h-8" />
