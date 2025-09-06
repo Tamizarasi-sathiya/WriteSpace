@@ -2,7 +2,8 @@ import { getPosts } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, BrainCircuit, Edit, Palette } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default async function Home() {
   const posts = await getPosts();
@@ -18,9 +19,51 @@ export default async function Home() {
             Explore a collection of insightful articles and stories. Create, share, and discover content that matters.
           </p>
         </div>
-        <a href="#content" className="absolute bottom-12 animate-bounce">
+        <a href="#features" className="absolute bottom-12 animate-bounce">
           <ArrowDown className="w-8 h-8 text-foreground/50"/>
         </a>
+      </section>
+
+      <section id="features" className="min-h-screen container mx-auto py-16 md:py-24 flex flex-col items-center justify-center">
+        <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Why PostCraft?</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">We provide the tools to make your blogging experience seamless and enjoyable.</p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center">
+                <CardHeader>
+                    <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
+                        <BrainCircuit className="w-8 h-8" />
+                    </div>
+                    <CardTitle>AI-Powered Suggestions</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-muted-foreground">Never run out of ideas. Get AI-powered topic suggestions to keep your content fresh and engaging.</p>
+                </CardContent>
+            </Card>
+            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center">
+                <CardHeader>
+                    <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
+                        <Edit className="w-8 h-8" />
+                    </div>
+                    <CardTitle>Simple Post Creation</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-muted-foreground">A clean and intuitive editor makes it easy to write, edit, and publish your posts.</p>
+                </CardContent>
+            </Card>
+            <Card className="bg-card/30 backdrop-blur-md border-border/20 text-center">
+                <CardHeader>
+                    <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
+                        <Palette className="w-8 h-8" />
+                    </div>
+                    <CardTitle>Elegant Design</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-muted-foreground">Focus on your writing with a beautifully simple and responsive design that looks great on any device.</p>
+                </CardContent>
+            </Card>
+        </div>
       </section>
 
       <section id="content" className="min-h-screen py-16 md:py-24">
