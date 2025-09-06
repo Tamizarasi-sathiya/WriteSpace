@@ -2,15 +2,39 @@ import { getPosts } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowDown, BrainCircuit, Edit, Palette } from 'lucide-react';
+import { ArrowDown, BrainCircuit, Edit, Palette, Feather, BookOpen, PenTool } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AnimatedSection from '@/components/AnimatedSection';
+import ParallaxWrapper from '@/components/ParallaxWrapper';
 
 export default async function Home() {
   const posts = await getPosts();
 
   return (
-    <div className="relative scroll-smooth">
+    <div className="relative scroll-smooth overflow-x-clip">
+      {/* Decorative Parallax Elements */}
+      <ParallaxWrapper>
+        {/* Background Shapes (Madhubani-inspired) */}
+        <div data-speed="0.2" className="absolute top-0 left-0 w-full h-full z-[-1]">
+          <div className="absolute top-[10vh] left-[5vw] w-48 h-48 bg-primary/5 rounded-full blur-2xl animate-pulse" />
+          <div className="absolute top-[50vh] right-[10vw] w-64 h-64 bg-accent/5 rounded-2xl blur-3xl animate-pulse animation-delay-2000" />
+          <div className="absolute top-[90vh] left-[15vw] w-40 h-40 bg-primary/10 rounded-full blur-2xl animate-pulse animation-delay-4000" />
+           <div className="absolute top-[150vh] right-[5vw] w-56 h-56 bg-accent/10 rounded-full blur-3xl animate-pulse" />
+        </div>
+        
+        {/* Foreground Icons */}
+        <div data-speed="-0.1" className="absolute top-[20vh] left-[15vw] z-10 opacity-30">
+          <Feather className="w-24 h-24 text-primary/50 -rotate-12" />
+        </div>
+        <div data-speed="-0.15" className="absolute top-[70vh] right-[20vw] z-10 opacity-30">
+          <BookOpen className="w-32 h-32 text-accent/50 rotate-12" />
+        </div>
+         <div data-speed="-0.12" className="absolute top-[120vh] left-[10vw] z-10 opacity-30">
+          <PenTool className="w-28 h-28 text-primary/50 rotate-6" />
+        </div>
+      </ParallaxWrapper>
+
+
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-center p-4 relative">
         <AnimatedSection animation="blur-in">
           <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10">
