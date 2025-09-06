@@ -12,14 +12,18 @@ export default function Header() {
         <nav className="flex items-center gap-2 md:gap-4">
           <Button variant="ghost" asChild>
             <Link href="/suggest-topics" className="flex items-center gap-2">
-              <Lightbulb />
-              <span className="hidden sm:inline">Suggest Topics</span>
+              <>
+                <Lightbulb />
+                <span className="hidden sm:inline">Suggest Topics</span>
+              </>
             </Link>
           </Button>
           <Button asChild>
             <Link href="/posts/new" className="flex items-center gap-2">
-              <PenSquare />
-              <span className="hidden sm:inline">New Post</span>
+              <>
+                <PenSquare />
+                <span className="hidden sm:inline">New Post</span>
+              </>
             </Link>
           </Button>
         </nav>
