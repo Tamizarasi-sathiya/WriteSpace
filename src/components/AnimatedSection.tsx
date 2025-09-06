@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 type AnimatedSectionProps = {
   children: ReactNode;
   className?: string;
-  animation?: 'fade-in' | 'slide-in-up';
+  animation?: 'fade-in' | 'slide-in-up' | 'blur-in';
   delay?: number;
   threshold?: number;
 };
@@ -43,13 +43,26 @@ export default function AnimatedSection({
     };
   }, [threshold]);
 
+  const getAnimationClass = () => {
+    if (!isVisible) return 'opacity-0';
+    switch (animation) {
+      case 'fade-in':
+        return 'animate-fade-in';
+      case 'slide-in-up':
+        return 'animate-slide-in-up';
+      case 'blur-in':
+        return 'animate-blur-in';
+      default:
+        return 'opacity-100';
+    }
+  };
+
   return (
     <div
       ref={ref}
       className={cn(
         'transition-opacity duration-1000 ease-out',
-        isVisible ? 'opacity-100' : 'opacity-0',
-        isVisible && animation === 'slide-in-up' && 'animate-slide-in-up',
+        getAnimationClass(),
         className
       )}
       style={{ animationDelay: `${delay}s`, animationFillMode: 'forwards' }}
