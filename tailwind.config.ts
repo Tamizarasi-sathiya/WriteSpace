@@ -107,6 +107,11 @@ export default {
         'blur-in': {
           '0%': { filter: 'blur(10px)', opacity: '0' },
           '100%': { filter: 'blur(0)', opacity: '1' },
+        },
+        'gradient-pan': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
         }
       },
       animation: {
@@ -115,6 +120,7 @@ export default {
         'fade-in': 'fade-in 0.8s ease-out forwards',
         'slide-in-up': 'slide-in-up 0.8s ease-out forwards',
         'blur-in': 'blur-in 0.8s ease-out forwards',
+        'gradient-pan': 'gradient-pan 3s ease-in-out infinite',
       },
     },
   },
