@@ -64,13 +64,13 @@ export default async function Home() {
         
         {/* Foreground Icons */}
         <div data-speed="-0.1" className="absolute top-[20vh] left-[15vw] z-10 opacity-30">
-          <Feather className="w-24 h-24 text-primary/50 -rotate-12" />
+          <Feather className="w-24 h-24 text-primary/50 -rotate-12 blur-sm" />
         </div>
         <div data-speed="-0.15" className="absolute top-[70vh] right-[20vw] z-10 opacity-30">
-          <BookOpen className="w-32 h-32 text-accent/50 rotate-12" />
+          <BookOpen className="w-32 h-32 text-accent/50 rotate-12 blur-md" />
         </div>
          <div data-speed="-0.12" className="absolute top-[120vh] left-[10vw] z-10 opacity-30">
-          <PenTool className="w-28 h-28 text-primary/50 rotate-6" />
+          <PenTool className="w-28 h-28 text-primary/50 rotate-6 blur-[3px]" />
         </div>
         
         {/* Madhubani Art Overlay */}
