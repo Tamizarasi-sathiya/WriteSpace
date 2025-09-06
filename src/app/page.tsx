@@ -88,8 +88,9 @@ export default async function Home() {
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-center p-4 relative">
         <AnimatedSection animation="blur-in">
           <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10">
-            <h1 className="text-5xl md:text-7xl font-headline font-bold mb-4">
-              Welcome to <span className="bg-gradient-to-r from-primary via-teal-400 to-accent bg-clip-text text-transparent animate-gradient-pan bg-[200%_auto]">Write Space</span>
+            <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4">
+              <span className="block text-2xl md:text-3xl font-normal">Welcome to</span>
+              <span className="block text-6xl md:text-8xl bg-gradient-to-r from-primary via-teal-400 to-accent bg-clip-text text-transparent animate-gradient-pan bg-[200%_auto]">Write Space</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Explore a collection of insightful articles and stories. Create, share, and discover content that matters.
