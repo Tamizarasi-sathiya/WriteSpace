@@ -20,9 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={cn(inter.variable, 'font-sans antialiased min-h-screen flex flex-col')}>
+      <body className={cn(inter.variable, 'font-sans antialiased')}>
         <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main>
           {children}
         </main>
         <Toaster />
