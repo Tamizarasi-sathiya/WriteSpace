@@ -91,11 +91,9 @@ export default async function Home() {
             <AnimatedSection animation="fade-in">
                 <span className="block text-2xl md:text-3xl font-normal">Welcome to</span>
             </AnimatedSection>
-            <AnimatedSection animation="fade-in" delay={0.5}>
-                <span className="block text-6xl md:text-8xl bg-gradient-to-r from-primary via-teal-400 to-accent bg-clip-text text-transparent animate-gradient-pan bg-[200%_auto]">Write Space</span>
-            </AnimatedSection>
+            <span className="block text-6xl md:text-8xl bg-gradient-to-r from-primary via-teal-400 to-accent bg-clip-text text-transparent animate-gradient-pan bg-[200%_auto] animate-text-reveal [animation-fill-mode:backwards]">Write Space</span>
           </h1>
-          <AnimatedSection animation="fade-in" delay={1}>
+          <AnimatedSection animation="fade-in" delay={1.5}>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Explore a collection of insightful articles and stories. Create, share, and discover content that matters.
             </p>
