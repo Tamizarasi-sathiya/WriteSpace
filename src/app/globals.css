@@ -4,48 +4,58 @@
 
 @layer base {
   :root {
-    --background: 210 29% 96%; /* #F0F4F8 */
-    --foreground: 215 25% 27%; /* Dark Gray */
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
-    --primary: 207 82% 67%; /* #64B5F6 */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 88%;
-    --secondary-foreground: 215 25% 27%;
-    --muted: 210 20% 88%;
-    --muted-foreground: 215 15% 45%;
-    --accent: 17 100% 78%; /* #FFAB91 */
-    --accent-foreground: 215 25% 27%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 207 82% 67%;
-    --radius: 0.5rem;
+    --background: 220 27% 97%; /* Catppuccin Latte Base */
+    --foreground: 232 16% 38%; /* Catppuccin Latte Text */
+    --card: 220 26% 95%; /* Catppuccin Latte Mantle */
+    --card-foreground: 232 16% 38%;
+    --popover: 220 26% 95%;
+    --popover-foreground: 232 16% 38%;
+    --primary: 258 70% 78%; /* Catppuccin Lavender */
+    --primary-foreground: 232 16% 38%;
+    --secondary: 220 25% 92%;
+    --secondary-foreground: 232 16% 38%;
+    --muted: 220 25% 92%;
+    --muted-foreground: 232 16% 50%;
+    --accent: 25 84% 74%; /* Catppuccin Peach */
+    --accent-foreground: 232 16% 38%;
+    --destructive: 3 74% 65%; /* Catppuccin Red */
+    --destructive-foreground: 220 27% 97%;
+    --border: 220 25% 92%; /* Catppuccin Crust */
+    --input: 220 25% 92%;
+    --ring: 258 70% 78%;
+    --radius: 1.5rem; /* 2xl */
+    --chart-1: 258 70% 78%; /* Lavender */
+    --chart-2: 170 60% 65%; /* Teal */
+    --chart-3: 25 84% 74%; /* Peach */
+    --chart-4: 348 86% 81%; /* Rosewater */
+    --chart-5: 285 85% 82%; /* Mauve */
   }
 
   .dark {
-    --background: 215 28% 17%;
-    --foreground: 210 40% 98%;
-    --card: 215 28% 17%;
-    --card-foreground: 210 40% 98%;
-    --popover: 215 28% 17%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 207 82% 67%;
-    --primary-foreground: 215 25% 27%;
-    --secondary: 217 19% 27%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 19% 27%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 17 100% 78%;
-    --accent-foreground: 215 25% 27%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 217 19% 27%;
-    --input: 217 19% 27%;
-    --ring: 207 82% 67%;
+    --background: 224 21% 11%; /* Catppuccin Mocha Base */
+    --foreground: 220 16% 79%; /* Catppuccin Mocha Text */
+    --card: 223 20% 9%; /* Catppuccin Mocha Mantle */
+    --card-foreground: 220 16% 79%;
+    --popover: 223 20% 9%;
+    --popover-foreground: 220 16% 79%;
+    --primary: 258 70% 78%; /* Catppuccin Lavender */
+    --primary-foreground: 224 21% 11%;
+    --secondary: 224 19% 7%;
+    --secondary-foreground: 220 16% 79%;
+    --muted: 224 19% 7%;
+    --muted-foreground: 220 16% 65%;
+    --accent: 25 84% 74%; /* Catppuccin Peach */
+    --accent-foreground: 224 21% 11%;
+    --destructive: 3 74% 65%; /* Catppuccin Red */
+    --destructive-foreground: 224 21% 11%;
+    --border: 224 19% 7%; /* Catppuccin Crust */
+    --input: 224 19% 7%;
+    --ring: 258 70% 78%;
+    --chart-1: 258 70% 78%; /* Lavender */
+    --chart-2: 170 60% 65%; /* Teal */
+    --chart-3: 25 84% 74%; /* Peach */
+    --chart-4: 348 86% 81%; /* Rosewater */
+    --chart-5: 285 85% 82%; /* Mauve */
   }
 }
 
@@ -57,5 +67,11 @@
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image:
+      radial-gradient(at 20% 20%, hsl(var(--primary) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 20%, hsl(var(--accent) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 20% 80%, hsl(170 60% 65% / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, hsl(348 86% 81% / 0.15) 0px, transparent 50%);
+    background-attachment: fixed;
   }
 }
