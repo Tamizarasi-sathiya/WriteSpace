@@ -119,13 +119,9 @@ export default {
         },
         'text-reveal': {
           '0%': {
-            transform: 'translate(0, 100%)',
+            transform: 'translate(0, -100%)',
             opacity: '0'
           },
-          '50%': {
-            transform: 'translate(0, 50%)',
-            opacity: '0.5'
-           },
           '100%': {
             transform: 'translate(0, 0)',
             opacity: '1'
@@ -140,7 +136,7 @@ export default {
         'blur-in': 'blur-in 0.8s ease-out forwards',
         'gradient-pan': 'gradient-pan 3s ease-in-out infinite',
         rotate: 'rotate 4s linear infinite',
-        'text-reveal': 'text-reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s',
+        'text-reveal': 'text-reveal 1s cubic-bezier(0.77, 0, 0.175, 1) 0.5s',
       },
     },
   },

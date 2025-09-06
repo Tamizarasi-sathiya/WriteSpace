@@ -86,7 +86,7 @@ export default async function Home() {
 
 
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-center p-4 relative">
-        <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10">
+        <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10 overflow-hidden">
           <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4">
             <AnimatedSection animation="fade-in">
                 <span className="block text-2xl md:text-3xl font-normal">Welcome to</span>
