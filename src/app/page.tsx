@@ -27,9 +27,9 @@ export default async function Home() {
         <div className="text-center py-20 bg-card/30 backdrop-blur-sm border-2 border-dashed rounded-2xl">
           <h2 className="text-2xl font-semibold mb-2">No posts yet.</h2>
           <p className="text-muted-foreground mb-4">Be the first one to create a post!</p>
-          <Button asChild>
-            <Link href="/posts/new">Create New Post</Link>
-          </Button>
+          <Link href="/posts/new">
+            <Button>Create New Post</Button>
+          </Link>
         </div>
       )}
     </div>
