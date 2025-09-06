@@ -13,7 +13,7 @@ const playfairDisplay = Playfair_Display({
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'PostCraft',
+  title: 'Write Space',
   description: 'A full-stack blog application built with Next.js and Firebase.',
 };
 
