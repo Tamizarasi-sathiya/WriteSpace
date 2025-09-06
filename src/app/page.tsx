@@ -2,7 +2,6 @@ import { getPosts } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowDown } from 'lucide-react';
 
 export default async function Home() {
@@ -10,14 +9,6 @@ export default async function Home() {
 
   return (
     <div className="relative scroll-smooth">
-      <Image
-        src="https://picsum.photos/1920/1080"
-        alt="Abstract background image"
-        fill
-        className="object-cover object-center fixed top-0 left-0 w-screen h-screen -z-10 opacity-20"
-        data-ai-hint="abstract background"
-      />
-      
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-center p-4 relative">
         <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10">
           <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-primary via-teal-400 to-accent mb-4">
