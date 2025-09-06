@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { PenSquare, Lightbulb } from 'lucide-react';
+import React from 'react';
 
 export default function Header() {
   return (
@@ -10,18 +11,18 @@ export default function Header() {
           PostCraft
         </Link>
         <nav className="flex items-center gap-2 md:gap-4">
-          <Button variant="ghost" asChild>
-            <Link href="/suggest-topics">
+          <Link href="/suggest-topics" passHref>
+            <Button variant="ghost">
               <Lightbulb />
               <span className="hidden sm:inline">Suggest Topics</span>
-            </Link>
-          </Button>
-          <Button asChild>
-            <Link href="/posts/new">
+            </Button>
+          </Link>
+          <Link href="/posts/new" passHref>
+            <Button>
               <PenSquare />
               <span className="hidden sm:inline">New Post</span>
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </nav>
       </div>
     </header>
