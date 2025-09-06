@@ -7,6 +7,46 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AnimatedSection from '@/components/AnimatedSection';
 import ParallaxWrapper from '@/components/ParallaxWrapper';
 
+const MadhubaniFlower = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="50" cy="50" r="10" />
+    <path d="M50 40 Q35 25 35 15 A15 15 0 0 1 65 15 Q65 25 50 40 Z" />
+    <path d="M60 50 Q75 35 85 35 A15 15 0 0 1 85 65 Q75 65 60 50 Z" />
+    <path d="M50 60 Q65 75 65 85 A15 15 0 0 1 35 85 Q35 75 50 60 Z" />
+    <path d="M40 50 Q25 65 15 65 A15 15 0 0 1 15 35 Q25 35 40 50 Z" />
+  </svg>
+);
+
+const MadhubaniBird = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M20 50 C 30 20, 70 20, 80 50 C 90 80, 50 100, 20 80" />
+    <path d="M80 50 C 85 45, 95 40, 90 30" />
+    <circle cx="70" cy="45" r="3" fill="currentColor" />
+    <path d="M20 80 C 10 90, 5 70, 20 60" />
+    <path d="M30 70 C 40 65, 50 65, 60 70" />
+    <path d="M35 65 C 45 60, 55 60, 65 65" />
+  </svg>
+);
+
+
 export default async function Home() {
   const posts = await getPosts();
 
@@ -31,6 +71,19 @@ export default async function Home() {
         </div>
          <div data-speed="-0.12" className="absolute top-[120vh] left-[10vw] z-10 opacity-30">
           <PenTool className="w-28 h-28 text-primary/50 rotate-6" />
+        </div>
+        
+        {/* Madhubani Art Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none">
+            <div data-speed="-0.18" className="absolute top-[15vh] right-[8vw] opacity-15">
+              <MadhubaniFlower className="w-32 h-32 text-accent/80 rotate-[20deg]" />
+            </div>
+            <div data-speed="-0.2" className="absolute top-[80vh] left-[5vw] opacity-15">
+              <MadhubaniBird className="w-48 h-48 text-primary/80 -rotate-[15deg] scale-x-[-1]" />
+            </div>
+             <div data-speed="-0.15" className="absolute top-[160vh] right-[12vw] opacity-15">
+              <MadhubaniFlower className="w-40 h-40 text-accent/80 rotate-[-30deg]" />
+            </div>
         </div>
       </ParallaxWrapper>
 
