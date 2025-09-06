@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="bg-background/50 backdrop-blur-lg shadow-sm sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <Link href="/" className="text-2xl font-bold text-foreground hover:opacity-80 transition-opacity">
+        <Link href="/" className="text-2xl font-headline font-bold text-foreground hover:opacity-80 transition-opacity">
           PostCraft
         </Link>
         <nav className="flex items-center gap-2 md:gap-4">

@@ -3,9 +3,13 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/Header';
 import { cn } from '@/lib/utils';
-import { Inter } from 'next/font/google';
+import { Playfair_Display, Inter } from 'next/font/google';
 import React from 'react';
 
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair-display',
+});
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
@@ -20,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={cn(inter.variable, 'font-sans antialiased')}>
+      <body className={cn(inter.variable, playfairDisplay.variable, 'font-sans antialiased')}>
         <Header />
         <main>
           {children}
