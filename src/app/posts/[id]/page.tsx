@@ -42,7 +42,7 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
       </header>
 
-      <div className="prose prose-lg dark:prose-invert max-w-none whitespace-pre-wrap text-lg font-body">
+      <div className="prose prose-lg dark:prose-invert max-w-none whitespace-pre-wrap break-words text-lg font-body">
         {post.content}
       </div>
 
