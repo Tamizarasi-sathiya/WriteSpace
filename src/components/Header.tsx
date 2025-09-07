@@ -61,13 +61,11 @@ export default function Header() {
   return (
     <header className="bg-background/50 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300 border-b border-transparent hover:shadow-lg hover:border-border">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <div className="flex-1 flex justify-start">
+        <div className="flex justify-start">
            <Link href="/suggest-topics" passHref>
-            <Button variant="ghost">
-              <span className="flex items-center gap-2">
-                <Lightbulb />
-                <span className="hidden sm:inline">Suggest Topics</span>
-              </span>
+            <Button variant="ghost" size="icon" className="sm:w-auto sm:px-4">
+              <Lightbulb className="h-5 w-5 sm:mr-2" />
+              <span className="hidden sm:inline">Suggest Topics</span>
             </Button>
           </Link>
         </div>
@@ -76,11 +74,11 @@ export default function Header() {
             Write Space
           </Link>
         </div>
-        <nav className="flex-1 flex justify-end items-center gap-2">
+        <nav className="flex justify-end items-center gap-2">
           <Link href="/posts/new">
-            <Button variant="outline">
-                <PenSquare className="mr-2 h-4 w-4" />
-                New Post
+            <Button variant="outline" size="icon" className="sm:w-auto sm:px-4">
+                <PenSquare className="h-5 w-5 sm:mr-2" />
+                <span className="hidden sm:inline">New Post</span>
             </Button>
           </Link>
           {loading ? (
@@ -89,9 +87,9 @@ export default function Header() {
             <UserNav />
           ) : (
             <Link href="/login">
-                <Button>
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Login
+                <Button size="icon" className="sm:w-auto sm:px-4">
+                    <LogIn className="h-5 w-5 sm:mr-2" />
+                    <span className="hidden sm:inline">Login</span>
                 </Button>
             </Link>
           )}
