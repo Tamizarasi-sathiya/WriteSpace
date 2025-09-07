@@ -1,3 +1,4 @@
+
 import { getPosts } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
 import { Button } from '@/components/ui/button';
