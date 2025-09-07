@@ -1,3 +1,4 @@
+
 import { getPost } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
@@ -47,7 +48,7 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
 
       <div className="mt-12 pt-6 border-t flex items-center gap-4">
-        <Button asChild variant="outline">
+        <Button variant="outline" asChild>
           <Link href={`/posts/${post.id}/edit`}>
             <span className="flex items-center">
               <Pencil className="mr-2 h-4 w-4" />
@@ -56,14 +57,16 @@ export default async function PostPage({ params }: PostPageProps) {
           </Link>
         </Button>
         <DeletePostButton postId={post.id} />
-        <Button asChild variant="ghost" className="ml-auto">
-            <Link href="/">
-              <span className="flex items-center">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Posts
-              </span>
-            </Link>
-        </Button>
+        <div className="ml-auto">
+            <Button variant="ghost" asChild>
+              <Link href="/">
+                <span className="flex items-center">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Posts
+                </span>
+              </Link>
+            </Button>
+        </div>
       </div>
     </article>
   );
