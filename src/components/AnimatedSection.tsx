@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useRef, useEffect, useState, type ReactNode } from 'react';
@@ -32,19 +33,19 @@ export default function AnimatedSection({
       { threshold }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [threshold]);
 
   const getAnimationClass = () => {
-    if (!isVisible) return 'opacity-0';
     switch (animation) {
       case 'fade-in':
         return 'animate-fade-in';
@@ -53,7 +54,7 @@ export default function AnimatedSection({
       case 'blur-in':
         return 'animate-blur-in';
       default:
-        return 'opacity-100';
+        return '';
     }
   };
 
@@ -62,10 +63,13 @@ export default function AnimatedSection({
       ref={ref}
       className={cn(
         'transition-opacity duration-1000 ease-out',
-        getAnimationClass(),
+        isVisible ? getAnimationClass() : 'opacity-0',
         className
       )}
-      style={{ animationDelay: `${delay}s`, animationFillMode: 'forwards' }}
+      style={{ 
+        animationDelay: `${delay}s`, 
+        animationFillMode: 'forwards' 
+      }}
     >
       {children}
     </div>
