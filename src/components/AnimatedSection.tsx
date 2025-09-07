@@ -62,8 +62,8 @@ export default function AnimatedSection({
     <div
       ref={ref}
       className={cn(
-        'transition-opacity duration-1000 ease-out',
-        isVisible ? getAnimationClass() : 'opacity-0',
+        'opacity-0', // Start invisible
+        isVisible && getAnimationClass(), // Apply animation class when visible
         className
       )}
       style={{ 
