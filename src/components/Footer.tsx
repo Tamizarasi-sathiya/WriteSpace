@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto py-6 text-center text-muted-foreground">
         <p>&copy; {new Date().getFullYear()} Write Space. All rights reserved.</p>
         <p className="text-sm mt-2">
-            Built with Next.js and Firebase by S Tamizarasi.
+          {'{Built with Next.js and Firebase by S Tamizarasi.}'}
         </p>
       </div>
     </footer>
