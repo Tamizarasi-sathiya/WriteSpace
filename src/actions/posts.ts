@@ -1,3 +1,4 @@
+
 'use server';
 
 import { z } from 'zod';
@@ -35,14 +36,19 @@ export async function createPostAction(prevState: FormState, formData: FormData)
     };
   }
 
-  const postId = await addPost(validatedFields.data);
+  try {
+    const postId = await addPost(validatedFields.data);
 
-  if (!postId) {
-    return { message: 'Failed to create post.' };
+    if (!postId) {
+      return { message: 'Failed to create post. Please try again.' };
+    }
+    
+    revalidatePath('/');
+    redirect(`/posts/${postId}`);
+  } catch (error) {
+    console.error(error);
+    return { message: 'An unexpected error occurred. Failed to create post.' };
   }
-  
-  revalidatePath('/');
-  redirect(`/posts/${postId}`);
 }
 
 export async function updatePostAction(id: string, prevState: FormState, formData: FormData) {
