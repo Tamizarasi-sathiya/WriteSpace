@@ -11,27 +11,21 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Check for missing environment variables and provide a more specific error.
-if (!firebaseConfig.projectId) {
-  throw new Error("Firebase Error: NEXT_PUBLIC_FIREBASE_PROJECT_ID is not defined. Please check your Vercel environment variables.");
-}
-if (!firebaseConfig.apiKey) {
-    throw new Error("Firebase Error: NEXT_PUBLIC_FIREBASE_API_KEY is not defined. Please check your Vercel environment variables.");
-}
+let app: FirebaseApp | null = null;
+let db: Firestore | null = null;
 
-
-let app: FirebaseApp;
-let db: Firestore;
-
-try {
-  // Initialize Firebase
-  // This pattern prevents re-initializing the app on hot reloads.
-  app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-  db = getFirestore(app);
-} catch (error) {
-  console.error("Firebase initialization failed:", error);
-  // Re-throw the error to ensure the server fails loudly instead of silently.
-  throw new Error("Failed to initialize Firebase. Please check your configuration and credentials.");
+// This check prevents the app from crashing on the server if env vars are missing.
+if (firebaseConfig.projectId && firebaseConfig.apiKey) {
+  try {
+    app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    db = getFirestore(app);
+  } catch (error) {
+    console.error("Firebase initialization failed:", error);
+    app = null;
+    db = null;
+  }
+} else {
+    console.warn("Firebase configuration is missing or incomplete. Database-related features will be disabled.");
 }
 
 export { db, app };

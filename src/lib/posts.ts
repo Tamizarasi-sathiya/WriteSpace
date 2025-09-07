@@ -3,8 +3,6 @@ import { db } from './firebase';
 import { collection, getDocs, getDoc, doc, addDoc, updateDoc, deleteDoc, serverTimestamp, query, orderBy, limit, Timestamp } from 'firebase/firestore';
 import type { Post, PostFormData } from '@/types';
 
-const postsCollection = collection(db, 'posts');
-
 // Helper to convert Firestore doc to Post object
 const fromFirestore = (doc: any): Post => {
     const data = doc.data();
@@ -18,7 +16,12 @@ const fromFirestore = (doc: any): Post => {
 };
 
 export async function getPosts(postLimit: number = 20): Promise<Post[]> {
+    if (!db) {
+        console.error("Firestore is not initialized. Cannot fetch posts.");
+        return [];
+    }
     try {
+        const postsCollection = collection(db, 'posts');
         const q = query(postsCollection, orderBy('createdAt', 'desc'), limit(postLimit));
         const snapshot = await getDocs(q);
         return snapshot.docs.map(fromFirestore);
@@ -29,6 +32,10 @@ export async function getPosts(postLimit: number = 20): Promise<Post[]> {
 }
 
 export async function getPost(id: string): Promise<Post | null> {
+    if (!db) {
+        console.error("Firestore is not initialized. Cannot fetch post.");
+        return null;
+    }
     try {
         const docRef = doc(db, 'posts', id);
         const docSnap = await getDoc(docRef);
@@ -46,7 +53,12 @@ export async function getPost(id: string): Promise<Post | null> {
 }
 
 export async function addPost(postData: PostFormData): Promise<string | null> {
+    if (!db) {
+        console.error("Firestore is not initialized. Cannot add post.");
+        return null;
+    }
     try {
+        const postsCollection = collection(db, 'posts');
         const docRef = await addDoc(postsCollection, {
             ...postData,
             createdAt: serverTimestamp(),
@@ -59,6 +71,10 @@ export async function addPost(postData: PostFormData): Promise<string | null> {
 }
 
 export async function updatePost(id: string, postData: Partial<PostFormData>): Promise<boolean> {
+    if (!db) {
+        console.error("Firestore is not initialized. Cannot update post.");
+        return false;
+    }
     try {
         const docRef = doc(db, 'posts', id);
         await updateDoc(docRef, postData);
@@ -70,6 +86,10 @@ export async function updatePost(id: string, postData: Partial<PostFormData>): P
 }
 
 export async function deletePost(id: string): Promise<boolean> {
+    if (!db) {
+        console.error("Firestore is not initialized. Cannot delete post.");
+        return false;
+    }
     try {
         const docRef = doc(db, 'posts', id);
         await deleteDoc(docRef);
