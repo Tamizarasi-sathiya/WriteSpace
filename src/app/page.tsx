@@ -6,6 +6,7 @@ import { ArrowDown, BrainCircuit, Edit, Palette, Feather, BookOpen, PenTool } fr
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AnimatedSection from '@/components/AnimatedSection';
 import React from 'react';
+import { auth } from '@/lib/firebase/server';
 
 // Some simple decorative components
 const MadhubaniFlower = ({ className }: { className?: string }) => (
@@ -34,6 +35,7 @@ const MadhubaniBird = ({ className }: { className?: string }) => (
 
 export default async function Home() {
   const posts = await getPosts();
+  const user = await auth.currentUser;
 
   return (
     <div className="relative scroll-smooth overflow-x-clip">
@@ -124,9 +126,11 @@ export default async function Home() {
          <AnimatedSection animation="slide-in-up" className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-bold mb-4">From the Blog</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">Discover the latest articles and stories from our community of writers.</p>
-            <Link href="/posts/new">
-                <Button>Create a New Post</Button>
-            </Link>
+            {user && (
+              <Link href="/posts/new">
+                  <Button>Create a New Post</Button>
+              </Link>
+            )}
         </AnimatedSection>
 
         {posts.length > 0 ? (
@@ -143,11 +147,13 @@ export default async function Home() {
               <div className="text-center py-20 bg-card/30 backdrop-blur-sm border-2 border-dashed rounded-2xl">
                 <h2 className="text-2xl font-headline font-semibold mb-2">No posts yet.</h2>
                 <p className="text-muted-foreground mb-4">Be the first one to create a post!</p>
-                <div>
-                  <Link href="/posts/new">
-                    <Button>Create New Post</Button>
-                  </Link>
-                </div>
+                {user && (
+                  <div>
+                    <Link href="/posts/new">
+                      <Button>Create New Post</Button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </AnimatedSection>
           </div>
