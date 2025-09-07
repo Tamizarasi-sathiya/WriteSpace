@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AnimatedSection from '@/components/AnimatedSection';
 import React from 'react';
 import { auth } from '@/lib/firebase/server';
+import ParallaxWrapper from '@/components/ParallaxWrapper';
 
 // Some simple decorative components
 const MadhubaniFlower = ({ className }: { className?: string }) => (
@@ -46,11 +47,17 @@ export default async function Home() {
         <div className="absolute top-[150vh] right-[5vw] w-56 h-56 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
       
-      <Feather className="w-24 h-24 text-primary/50 absolute top-[20vh] left-[15vw] z-10 opacity-30 -rotate-12 blur-sm" />
-      <BookOpen className="w-32 h-32 text-accent/50 absolute top-[70vh] right-[20vw] z-10 opacity-30 rotate-12 blur-md" />
-      <PenTool className="w-28 h-28 text-primary/50 absolute top-[120vh] left-[10vw] z-10 opacity-30 rotate-6 blur-[3px]" />
+      <ParallaxWrapper speed={0.3}>
+        <Feather className="w-24 h-24 text-primary/50 absolute top-[20vh] left-[15vw] z-10 opacity-30 -rotate-12 blur-sm" />
+      </ParallaxWrapper>
+      <ParallaxWrapper speed={0.5}>
+        <BookOpen className="w-32 h-32 text-accent/50 absolute top-[70vh] right-[20vw] z-10 opacity-30 rotate-12 blur-md" />
+      </ParallaxWrapper>
+      <ParallaxWrapper speed={0.2}>
+        <PenTool className="w-28 h-28 text-primary/50 absolute top-[120vh] left-[10vw] z-10 opacity-30 rotate-6 blur-[3px]" />
+      </ParallaxWrapper>
 
-      <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
         <MadhubaniFlower className="w-32 h-32 absolute top-[15vh] right-[8vw] text-accent/80 opacity-15 rotate-[20deg]" />
         <MadhubaniBird className="w-48 h-48 absolute top-[80vh] left-[5vw] text-primary/80 opacity-15 -rotate-[15deg] scale-x-[-1]" />
       </div>
