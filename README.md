@@ -1,4 +1,5 @@
-<img width="1625" height="963" alt="image" src="https://github.com/user-attachments/assets/eede4c2b-6bb6-4d8e-8950-2155c7aec958" />
+<img width="1832" height="930" alt="image" src="https://github.com/user-attachments/assets/554fe32a-e68b-465a-9dbf-d4e121bd268e" />
+
 
 # 🪄 Writespace
 
