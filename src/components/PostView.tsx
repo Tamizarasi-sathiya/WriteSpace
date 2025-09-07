@@ -47,7 +47,7 @@ export default function PostView({ post }: PostViewProps) {
       </header>
 
       <AnimatedSection animation="slide-in-up" delay={0.2}>
-        <div className="prose prose-lg dark:prose-invert max-w-none whitespace-pre-wrap break-words text-lg font-body">
+        <div className="prose prose-lg dark:prose-invert max-w-none whitespace-pre-wrap break-words text-lg font-sans">
           {post.content}
         </div>
       </AnimatedSection>

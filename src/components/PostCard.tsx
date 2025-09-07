@@ -18,7 +18,7 @@ export default function PostCard({ post }: PostCardProps) {
 
   return (
     <Link href={`/posts/${post.id}`} className="group block">
-      <Card className="h-full flex flex-col transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 bg-card/30 backdrop-blur-md border-border/20 hover:border-primary/50">
+      <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-1 bg-card/30 backdrop-blur-md border-border/20 hover:border-primary/50">
         <CardHeader>
           <CardTitle className="font-headline font-bold text-2xl group-hover:text-primary transition-colors">{post.title}</CardTitle>
         </CardHeader>
