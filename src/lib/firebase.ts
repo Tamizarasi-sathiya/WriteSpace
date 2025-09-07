@@ -11,22 +11,32 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-let app: FirebaseApp;
+// Ensure all config values are present before initializing
+const isConfigValid = Object.values(firebaseConfig).every(Boolean);
 
-if (getApps().length === 0) {
-    if (Object.values(firebaseConfig).every(Boolean)) {
-        app = initializeApp(firebaseConfig);
-    } else {
-        console.error("Firebase config is missing or incomplete. Check your environment variables.");
-        // Throw an error during build/server-side execution if config is missing
-        if (typeof window === 'undefined') {
-            throw new Error("Server-side Firebase initialization failed due to missing environment variables.");
-        }
+let app: FirebaseApp;
+let db: Firestore;
+
+try {
+  if (isConfigValid) {
+    app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    db = getFirestore(app);
+  } else {
+    // Log an error if the config is incomplete. 
+    // This helps in debugging Vercel environment variable issues.
+    console.error("Firebase config is missing or incomplete. Check your environment variables.");
+    // In a server environment, we should throw to fail the build/render
+    if (typeof window === 'undefined') {
+      throw new Error("Server-side Firebase initialization failed due to missing environment variables.");
     }
-} else {
-    app = getApp();
+  }
+} catch (error) {
+  console.error("Failed to initialize Firebase:", error);
+  // Re-throw the error to make it visible in server logs
+  if (typeof window === 'undefined') {
+    throw error;
+  }
 }
 
-const db: Firestore = getFirestore(app);
-
+// @ts-ignore - db and app will be initialized if config is valid
 export { db, app };
