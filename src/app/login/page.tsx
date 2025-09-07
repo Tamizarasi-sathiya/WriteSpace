@@ -35,6 +35,7 @@ export default function LoginPage() {
   const handleSignIn = async () => {
     try {
       await signIn();
+      // On successful sign-in, the useEffect above will redirect.
     } catch (err) {
       setError((err as Error).message);
     }
