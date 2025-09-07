@@ -28,11 +28,13 @@ export default function PostView({ post }: PostViewProps) {
   const isAuthor = user && user.uid === post.authorId;
 
   return (
-    <AnimatedSection animation="slide-in-up">
-      <article className="max-w-3xl mx-auto">
-        <header className="mb-8">
+    <article className="max-w-3xl mx-auto">
+      <header className="mb-8">
+        <AnimatedSection animation="slide-in-up">
           <h1 className="font-headline text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
-          <div className="flex items-center gap-3 text-muted-foreground text-sm">
+        </AnimatedSection>
+        <AnimatedSection animation="slide-in-up" delay={0.1}>
+          <div className="flex items-center gap-3 text-muted-foreground text-sm mt-4">
               <Avatar className="h-10 w-10">
                   <AvatarFallback>{getInitials(post.author)}</AvatarFallback>
               </Avatar>
@@ -41,12 +43,16 @@ export default function PostView({ post }: PostViewProps) {
                   <time dateTime={postDate?.toISOString()}>{formattedDate}</time>
               </div>
           </div>
-        </header>
+        </AnimatedSection>
+      </header>
 
+      <AnimatedSection animation="slide-in-up" delay={0.2}>
         <div className="prose prose-lg dark:prose-invert max-w-none whitespace-pre-wrap break-words text-lg font-body">
           {post.content}
         </div>
+      </AnimatedSection>
 
+      <AnimatedSection animation="slide-in-up" delay={0.3}>
         <div className="mt-12 pt-6 border-t flex items-center gap-4">
           {isAuthor && (
               <>
@@ -68,7 +74,7 @@ export default function PostView({ post }: PostViewProps) {
               </Link>
           </div>
         </div>
-      </article>
-    </AnimatedSection>
+      </AnimatedSection>
+    </article>
   );
 }
