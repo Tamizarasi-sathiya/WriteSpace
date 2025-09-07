@@ -48,24 +48,20 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
 
       <div className="mt-12 pt-6 border-t flex items-center gap-4">
-        <Button variant="outline" asChild>
-          <Link href={`/posts/${post.id}/edit`}>
-            <span className="flex items-center">
-              <Pencil className="mr-2 h-4 w-4" />
-              Edit
-            </span>
-          </Link>
-        </Button>
+        <Link href={`/posts/${post.id}/edit`}>
+          <Button variant="outline">
+            <Pencil className="mr-2 h-4 w-4" />
+            Edit
+          </Button>
+        </Link>
         <DeletePostButton postId={post.id} />
         <div className="ml-auto">
-            <Button variant="ghost" asChild>
-              <Link href="/">
-                <span className="flex items-center">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Posts
-                </span>
-              </Link>
-            </Button>
+            <Link href="/">
+              <Button variant="ghost">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Posts
+              </Button>
+            </Link>
         </div>
       </div>
     </article>
