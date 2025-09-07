@@ -25,9 +25,6 @@ export type FormState = {
 
 export async function createPostAction(prevState: FormState, formData: FormData) {
   const user = await auth.currentUser;
-  if (!user) {
-    return { message: 'You must be logged in to create a post.' };
-  }
 
   const validatedFields = postSchema.safeParse({
     title: formData.get('title'),
@@ -45,7 +42,7 @@ export async function createPostAction(prevState: FormState, formData: FormData)
   try {
     const postId = await addPost({
       ...validatedFields.data,
-      authorId: user.uid,
+      authorId: user ? user.uid : 'anonymous',
     });
 
     if (!postId) {

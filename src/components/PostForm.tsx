@@ -44,11 +44,11 @@ export default function PostForm({ post }: PostFormProps) {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!loading && !user) {
-        redirect('/login');
-    }
-    if (isEditing && !loading && user && post.authorId !== user.uid) {
+    // Redirect only when editing a post without being the author
+    if (isEditing && !loading) {
+      if (!user || post.authorId !== user.uid) {
         redirect('/');
+      }
     }
   }, [user, loading, isEditing, post]);
 
@@ -68,7 +68,8 @@ export default function PostForm({ post }: PostFormProps) {
     }
   }, [state, toast]);
   
-  const authorName = post?.author || user?.displayName || '';
+  const authorName = isEditing ? post?.author : '';
+  const isAuthorReadOnly = isEditing && !!user;
 
   return (
     <form action={formAction}>
@@ -91,9 +92,11 @@ export default function PostForm({ post }: PostFormProps) {
             <Input
               id="author"
               name="author"
-              value={authorName}
-              readOnly
-              className="text-base bg-muted"
+              placeholder="Your name"
+              defaultValue={authorName}
+              readOnly={isAuthorReadOnly}
+              required
+              className={`text-base ${isAuthorReadOnly ? 'bg-muted' : ''}`}
             />
             {state.errors?.author && <p className="text-sm text-destructive">{state.errors.author.join(', ')}</p>}
           </div>
