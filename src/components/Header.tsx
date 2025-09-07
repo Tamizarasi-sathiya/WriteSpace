@@ -16,7 +16,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex-1 flex justify-center">
-          <Link href="/" className="text-2xl font-headline font-bold text-foreground hover:opacity-80 transition-opacity">
+          <Link href="/" className="text-xl sm:text-2xl font-headline font-bold text-foreground hover:opacity-80 transition-opacity whitespace-nowrap">
             Write Space
           </Link>
         </div>
