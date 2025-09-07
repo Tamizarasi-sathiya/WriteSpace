@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, PenSquare } from 'lucide-react';
 import Link from 'next/link';
+import React from 'react';
 
 type PostFormProps = {
   post?: Post;
@@ -23,8 +24,10 @@ function SubmitButton({ isEditing }: { isEditing: boolean }) {
 
     return (
         <Button type="submit" disabled={pending} className="w-full sm:w-auto">
-            <PenSquare className="h-4 w-4" />
-            {pending ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Post' : 'Create Post')}
+            <>
+                <PenSquare className="h-4 w-4" />
+                {pending ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Post' : 'Create Post')}
+            </>
         </Button>
     )
 }
