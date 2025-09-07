@@ -34,7 +34,7 @@ export default function PostView({ post }: PostViewProps) {
           <h1 className="font-headline text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
         </AnimatedSection>
         <AnimatedSection animation="slide-in-up" delay={0.1}>
-          <div className="flex items-center gap-3 text-muted-foreground text-sm mt-4">
+          <div className="flex items-center gap-3 text-muted-foreground text-sm mt-8">
               <Avatar className="h-10 w-10">
                   <AvatarFallback>{getInitials(post.author)}</AvatarFallback>
               </Avatar>
