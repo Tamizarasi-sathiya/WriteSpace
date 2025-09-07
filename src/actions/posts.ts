@@ -2,9 +2,10 @@
 'use server';
 
 import { z } from 'zod';
-import { addPost, deletePost, updatePost } from '@/lib/posts';
+import { addPost, deletePost, getPost, updatePost } from '@/lib/posts';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { auth } from '@/lib/firebase/server';
 
 const postSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters long.'),
@@ -23,6 +24,11 @@ export type FormState = {
 
 
 export async function createPostAction(prevState: FormState, formData: FormData) {
+  const user = await auth.currentUser;
+  if (!user) {
+    return { message: 'You must be logged in to create a post.' };
+  }
+
   const validatedFields = postSchema.safeParse({
     title: formData.get('title'),
     content: formData.get('content'),
@@ -37,7 +43,10 @@ export async function createPostAction(prevState: FormState, formData: FormData)
   }
 
   try {
-    const postId = await addPost(validatedFields.data);
+    const postId = await addPost({
+      ...validatedFields.data,
+      authorId: user.uid,
+    });
 
     if (!postId) {
       return { message: 'Failed to create post. Please try again.' };
@@ -52,8 +61,18 @@ export async function createPostAction(prevState: FormState, formData: FormData)
 }
 
 export async function updatePostAction(id: string, prevState: FormState, formData: FormData) {
+    const user = await auth.currentUser;
+    if (!user) {
+        return { message: 'You must be logged in to update a post.' };
+    }
+
     if (!id) {
         return { message: 'Post ID is missing.' };
+    }
+    
+    const post = await getPost(id);
+    if (post?.authorId !== user.uid) {
+        return { message: 'You are not authorized to edit this post.' };
     }
 
     const validatedFields = postSchema.safeParse({
@@ -69,7 +88,10 @@ export async function updatePostAction(id: string, prevState: FormState, formDat
         };
     }
 
-    const success = await updatePost(id, validatedFields.data);
+    const success = await updatePost(id, {
+        ...validatedFields.data,
+        authorId: user.uid
+    });
 
     if (!success) {
         return { message: 'Failed to update post.' };
@@ -82,9 +104,20 @@ export async function updatePostAction(id: string, prevState: FormState, formDat
 
 
 export async function deletePostAction(id: string) {
+    const user = await auth.currentUser;
+    if (!user) {
+        throw new Error('You must be logged in to delete a post.');
+    }
+    
     if (!id) {
         throw new Error('Post ID is missing.');
     }
+
+    const post = await getPost(id);
+    if (post?.authorId !== user.uid) {
+        throw new Error('You are not authorized to delete this post.');
+    }
+
     await deletePost(id);
     revalidatePath('/');
     redirect('/');

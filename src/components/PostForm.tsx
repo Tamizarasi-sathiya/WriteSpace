@@ -15,6 +15,8 @@ import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, PenSquare } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { redirect } from 'next/navigation';
 
 type PostFormProps = {
   post?: Post;
@@ -34,11 +36,21 @@ function SubmitButton({ isEditing }: { isEditing: boolean }) {
 }
 
 export default function PostForm({ post }: PostFormProps) {
+  const { user, loading } = useAuth();
   const isEditing = !!post;
   const action = isEditing ? updatePostAction.bind(null, post.id) : createPostAction;
 
   const [state, formAction] = useActionState(action, { message: '' });
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (!loading && !user) {
+        redirect('/login');
+    }
+    if (isEditing && !loading && user && post.authorId !== user.uid) {
+        redirect('/');
+    }
+  }, [user, loading, isEditing, post]);
 
   useEffect(() => {
     if (state.message && state.errors) {
@@ -55,6 +67,8 @@ export default function PostForm({ post }: PostFormProps) {
       });
     }
   }, [state, toast]);
+  
+  const authorName = post?.author || user?.displayName || '';
 
   return (
     <form action={formAction}>
@@ -77,10 +91,9 @@ export default function PostForm({ post }: PostFormProps) {
             <Input
               id="author"
               name="author"
-              placeholder="Your name"
-              defaultValue={post?.author}
-              required
-              className="text-base"
+              value={authorName}
+              readOnly
+              className="text-base bg-muted"
             />
             {state.errors?.author && <p className="text-sm text-destructive">{state.errors.author.join(', ')}</p>}
           </div>

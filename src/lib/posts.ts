@@ -12,6 +12,7 @@ const fromFirestore = (doc: any): Post => {
         title: data.title,
         content: data.content,
         author: data.author,
+        authorId: data.authorId,
         createdAt: createdAtTimestamp ? createdAtTimestamp.toDate().toISOString() : new Date().toISOString(),
     };
 };
