@@ -35,7 +35,7 @@ A modern full-stack blog application with a cozy pastel aesthetic. **Writespace*
 
 1️⃣ **Clone the repository**
 ```bash
-git clone https://github.com/your-username/writespace.git
+git clone https://github.com/Tamizarasi-sathiya/WriteSpace
 cd writespace
 
 
