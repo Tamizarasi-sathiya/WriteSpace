@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import { cn } from '@/lib/utils';
 import { Playfair_Display, Inter } from 'next/font/google';
 import React from 'react';
+import Footer from '@/components/Footer';
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -58,11 +59,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={cn(inter.variable, playfairDisplay.variable, 'font-sans antialiased')}>
+      <body className={cn(inter.variable, playfairDisplay.variable, 'font-sans antialiased flex flex-col min-h-screen')}>
         <Header />
-        <main>
+        <main className="flex-grow">
           {children}
         </main>
+        <Footer />
         <Toaster />
       </body>
     </html>

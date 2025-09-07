@@ -11,7 +11,8 @@ import { Label } from '@/components/ui/label';
 import type { Post } from '@/types';
 import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { PenSquare } from 'lucide-react';
+import { ArrowLeft, PenSquare } from 'lucide-react';
+import Link from 'next/link';
 
 type PostFormProps = {
   post?: Post;
@@ -92,7 +93,13 @@ export default function PostForm({ post }: PostFormProps) {
             {state.errors?.content && <p className="text-sm text-destructive">{state.errors.content.join(', ')}</p>}
           </div>
         </CardContent>
-        <CardFooter className="flex justify-end">
+        <CardFooter className="flex justify-between items-center">
+            <Button asChild variant="ghost">
+                <Link href={isEditing ? `/posts/${post.id}` : '/'}>
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Back
+                </Link>
+            </Button>
             <SubmitButton isEditing={isEditing} />
         </CardFooter>
       </Card>

@@ -5,7 +5,7 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <header className="bg-background/50 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <header className="bg-background/50 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300 border-b border-transparent hover:shadow-lg hover:border-border">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="flex-1 flex justify-start">
            <Link href="/suggest-topics" passHref>
