@@ -22,6 +22,7 @@ function SubmitButton({ isEditing }: { isEditing: boolean }) {
 
     return (
         <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+            <PenSquare className="h-4 w-4" />
             {pending ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Post' : 'Create Post')}
         </Button>
     )
