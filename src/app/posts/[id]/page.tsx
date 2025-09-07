@@ -16,6 +16,8 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <PostView post={post} />
+    <div className="container py-12">
+        <PostView post={post} />
+    </div>
   );
 }

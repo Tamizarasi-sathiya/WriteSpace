@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LogIn } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import AnimatedSection from '@/components/AnimatedSection';
 
 export default function LoginPage() {
   const { user, signIn, loading } = useAuth();
@@ -42,19 +43,21 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-200px)]">
-      <Card className="w-full max-w-sm">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-headline">Welcome Back!</CardTitle>
-          <CardDescription>Sign in to continue to Write Space.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Button onClick={handleSignIn} disabled={loading} className="w-full">
-            <LogIn className="mr-2 h-4 w-4" />
-            {loading ? 'Signing in...' : 'Sign in with Google'}
-          </Button>
-        </CardContent>
-      </Card>
+    <div className="container py-12 flex items-center justify-center min-h-[calc(100vh-200px)]">
+      <AnimatedSection animation="slide-in-up" className="w-full max-w-sm">
+        <Card>
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-headline">Welcome Back!</CardTitle>
+            <CardDescription>Sign in to continue to Write Space.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button onClick={handleSignIn} disabled={loading} className="w-full">
+              <LogIn className="mr-2 h-4 w-4" />
+              {loading ? 'Signing in...' : 'Sign in with Google'}
+            </Button>
+          </CardContent>
+        </Card>
+      </AnimatedSection>
     </div>
   );
 }

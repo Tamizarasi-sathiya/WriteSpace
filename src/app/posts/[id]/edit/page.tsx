@@ -1,6 +1,7 @@
 import PostForm from '@/components/PostForm';
 import { getPost } from '@/lib/posts';
 import { notFound } from 'next/navigation';
+import AnimatedSection from '@/components/AnimatedSection';
 
 type EditPostPageProps = {
     params: {
@@ -16,9 +17,13 @@ export default async function EditPostPage({ params }: EditPostPageProps) {
     }
 
     return (
-        <div className="max-w-3xl mx-auto">
-            <h1 className="font-headline text-4xl font-bold mb-8 text-center">Edit Post</h1>
-            <PostForm post={post} />
+        <div className="container py-12 max-w-3xl mx-auto">
+             <AnimatedSection animation="slide-in-up">
+                <h1 className="font-headline text-4xl font-bold mb-8 text-center">Edit Post</h1>
+            </AnimatedSection>
+            <AnimatedSection animation="slide-in-up" delay={0.1}>
+                <PostForm post={post} />
+            </AnimatedSection>
         </div>
     );
 }
