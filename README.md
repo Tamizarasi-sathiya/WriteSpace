@@ -20,7 +20,7 @@ A modern full-stack blog application with a cozy pastel aesthetic. **Writespace*
 
 **Frontend:** React.js / Next.js + TailwindCSS + Framer Motion  
 **Backend:** Node.js + Express (or Next.js API routes)  
-**Database:** Supabase
+**Database:** Firebase
 **Deployment:** Vercel
 
 ---
