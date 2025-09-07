@@ -8,6 +8,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import React from 'react';
 import { auth } from '@/lib/firebase/server';
 import ParallaxWrapper from '@/components/ParallaxWrapper';
+import ParallaxForeground from '@/components/ParallaxForeground';
 
 // Some simple decorative components
 const MadhubaniFlower = ({ className }: { className?: string }) => (
@@ -47,15 +48,34 @@ export default async function Home() {
         <div className="absolute top-[150vh] right-[5vw] w-56 h-56 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
       
-      <ParallaxWrapper speed={0.3}>
-        <Feather className="w-24 h-24 text-primary/50 absolute top-[20vh] left-[15vw] z-10 opacity-30 -rotate-12 blur-sm" />
-      </ParallaxWrapper>
-      <ParallaxWrapper speed={0.5}>
-        <BookOpen className="w-32 h-32 text-accent/50 absolute top-[70vh] right-[20vw] z-10 opacity-30 rotate-12 blur-md" />
-      </ParallaxWrapper>
-      <ParallaxWrapper speed={0.2}>
-        <PenTool className="w-28 h-28 text-primary/50 absolute top-[120vh] left-[10vw] z-10 opacity-30 rotate-6 blur-[3px]" />
-      </ParallaxWrapper>
+      {/* Foreground Parallax Elements */}
+      <ParallaxForeground
+        className="top-[15vh] left-[10vw] w-24 h-24"
+        yRange={[-100, 100]}
+        scaleRange={[0.8, 1.2]}
+        opacityRange={[0.7, 1]}
+      >
+        <Feather className="w-full h-full text-primary/50 opacity-30 -rotate-12 blur-sm" />
+      </ParallaxForeground>
+      
+      <ParallaxForeground
+        className="top-[60vh] right-[15vw] w-32 h-32"
+        yRange={[-50, 200]}
+        scaleRange={[1, 1.5]}
+        opacityRange={[0.5, 1]}
+      >
+        <BookOpen className="w-full h-full text-accent/50 opacity-30 rotate-12 blur-md" />
+      </ParallaxForeground>
+
+      <ParallaxForeground
+        className="top-[110vh] left-[5vw] w-28 h-28"
+        yRange={[-200, 50]}
+        scaleRange={[1.2, 0.8]}
+        opacityRange={[1, 0.7]}
+      >
+        <PenTool className="w-full h-full text-primary/50 opacity-30 rotate-6 blur-[3px]" />
+      </ParallaxForeground>
+
 
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
         <ParallaxWrapper speed={0.15}>
