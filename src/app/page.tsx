@@ -58,8 +58,12 @@ export default async function Home() {
       </ParallaxWrapper>
 
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
-        <MadhubaniFlower className="w-32 h-32 absolute top-[15vh] right-[8vw] text-accent/80 opacity-15 rotate-[20deg]" />
-        <MadhubaniBird className="w-48 h-48 absolute top-[80vh] left-[5vw] text-primary/80 opacity-15 -rotate-[15deg] scale-x-[-1]" />
+        <ParallaxWrapper speed={0.15}>
+          <MadhubaniFlower className="w-32 h-32 absolute top-[15vh] right-[8vw] text-accent/80 opacity-20 rotate-[20deg]" />
+        </ParallaxWrapper>
+        <ParallaxWrapper speed={0.25}>
+          <MadhubaniBird className="w-48 h-48 absolute top-[80vh] left-[5vw] text-primary/80 opacity-20 -rotate-[15deg] scale-x-[-1]" />
+        </ParallaxWrapper>
       </div>
 
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-center p-4 relative">
