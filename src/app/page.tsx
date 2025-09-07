@@ -120,9 +120,17 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="content" className="min-h-screen py-16 md:py-24">
+      <section id="content" className="min-h-screen container mx-auto py-16 md:py-24">
+         <AnimatedSection animation="slide-in-up" className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-headline font-bold mb-4">From the Blog</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">Discover the latest articles and stories from our community of writers.</p>
+            <Link href="/posts/new">
+                <Button>Create a New Post</Button>
+            </Link>
+        </AnimatedSection>
+
         {posts.length > 0 ? (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 container mx-auto">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (
               <AnimatedSection key={post.id} animation="slide-in-up" delay={0.1 * (i % 3)}>
                 <PostCard post={post} />
@@ -130,7 +138,7 @@ export default async function Home() {
             ))}
           </div>
         ) : (
-          <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-200px)]">
+          <div className="flex items-center justify-center min-h-[calc(100vh-400px)]">
             <AnimatedSection animation="blur-in" className="w-full max-w-2xl">
               <div className="text-center py-20 bg-card/30 backdrop-blur-sm border-2 border-dashed rounded-2xl">
                 <h2 className="text-2xl font-headline font-semibold mb-2">No posts yet.</h2>
