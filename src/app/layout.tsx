@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -6,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { Playfair_Display, Inter } from 'next/font/google';
 import React from 'react';
 import Footer from '@/components/Footer';
+import { AuthProvider } from '@/context/AuthContext';
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -60,11 +62,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={cn(inter.variable, playfairDisplay.variable, 'font-sans antialiased flex flex-col min-h-screen')}>
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </AuthProvider>
         <Toaster />
       </body>
     </html>

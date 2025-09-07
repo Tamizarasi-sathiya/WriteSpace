@@ -1,9 +1,71 @@
+
+'use client';
+
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { PenSquare, Lightbulb } from 'lucide-react';
+import { PenSquare, Lightbulb, LogOut } from 'lucide-react';
 import React from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
+import { Skeleton } from './ui/skeleton';
+
+function UserNav() {
+  const { user, signOut } = useAuth();
+
+  if (!user) {
+    return null;
+  }
+
+  const getInitials = (name?: string | null) => {
+    if (!name) return 'U';
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+          <Avatar className="h-10 w-10">
+            <AvatarImage src={user.photoURL ?? ''} alt={user.displayName ?? ''} />
+            <AvatarFallback>{getInitials(user.displayName)}</AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56" align="end" forceMount>
+        <DropdownMenuLabel className="font-normal">
+          <div className="flex flex-col space-y-1">
+            <p className="text-sm font-medium leading-none">{user.displayName}</p>
+            <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Link href="/posts/new">
+            <PenSquare className="mr-2 h-4 w-4" />
+            <span>New Post</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={signOut}>
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Log out</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 export default function Header() {
+  const { user, signIn, loading } = useAuth();
+
   return (
     <header className="bg-background/50 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300 border-b border-transparent hover:shadow-lg hover:border-border">
       <div className="container mx-auto flex justify-between items-center p-4">
@@ -23,14 +85,15 @@ export default function Header() {
           </Link>
         </div>
         <nav className="flex-1 flex justify-end items-center">
-          <Link href="/posts/new" passHref>
-            <Button>
-              <span className="flex items-center gap-2">
-                <PenSquare />
-                <span className="hidden sm:inline">New Post</span>
-              </span>
+          {loading ? (
+            <Skeleton className="h-10 w-24" />
+          ) : user ? (
+            <UserNav />
+          ) : (
+            <Button onClick={signIn}>
+              Login
             </Button>
-          </Link>
+          )}
         </nav>
       </div>
     </header>
