@@ -96,8 +96,10 @@ export default function PostForm({ post }: PostFormProps) {
         <CardFooter className="flex justify-between items-center">
           <Button asChild variant="ghost">
             <Link href={isEditing ? `/posts/${post.id}` : '/'}>
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
+              <>
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back
+              </>
             </Link>
           </Button>
           <SubmitButton isEditing={isEditing} />
