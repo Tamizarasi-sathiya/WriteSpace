@@ -98,7 +98,7 @@ export default function PostForm({ post }: PostFormProps) {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between items-center">
-          <Link href={isEditing ? `/posts/${post.id}` : '/'} legacyBehavior passHref>
+          <Link href={isEditing ? `/posts/${post.id}` : '/'}>
             <Button variant="ghost">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back
