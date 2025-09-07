@@ -9,7 +9,7 @@ type PostCardProps = {
 };
 
 export default function PostCard({ post }: PostCardProps) {
-  const postDate = post.createdAt?.toDate();
+  const postDate = new Date(post.createdAt);
   const formattedDate = postDate ? format(postDate, 'MMMM d, yyyy') : 'Date not available';
 
   const getInitials = (name: string) => {

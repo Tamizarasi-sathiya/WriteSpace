@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Pencil } from 'lucide-react';
 import { DeletePostButton } from '@/components/DeletePostButton';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import React from 'react';
 
 type PostPageProps = {
     params: {
@@ -25,8 +26,8 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
   
-  const postDate = post.createdAt?.toDate();
-  const formattedDate = postDate ? format(postDate, 'MMMM d, yy') : 'Date not available';
+  const postDate = new Date(post.createdAt);
+  const formattedDate = format(postDate, 'MMMM d, yy');
 
   return (
     <article className="max-w-3xl mx-auto">

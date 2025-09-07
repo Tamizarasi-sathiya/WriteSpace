@@ -6,12 +6,13 @@ import type { Post, PostFormData } from '@/types';
 // Helper to convert Firestore doc to Post object
 const fromFirestore = (doc: any): Post => {
     const data = doc.data();
+    const createdAtTimestamp = data.createdAt as Timestamp;
     return {
         id: doc.id,
         title: data.title,
         content: data.content,
         author: data.author,
-        createdAt: data.createdAt as Timestamp,
+        createdAt: createdAtTimestamp ? createdAtTimestamp.toDate().toISOString() : new Date().toISOString(),
     };
 };
 

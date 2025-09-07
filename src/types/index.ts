@@ -1,11 +1,10 @@
-import type { Timestamp } from 'firebase/firestore';
 
 export type Post = {
   id: string;
   title: string;
   content: string;
   author: string;
-  createdAt: Timestamp;
+  createdAt: string; // Changed from Timestamp to string
 };
 
 export type PostFormData = {
