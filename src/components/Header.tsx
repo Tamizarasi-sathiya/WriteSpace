@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { PenSquare, Lightbulb, LogOut } from 'lucide-react';
+import { PenSquare, Lightbulb, LogIn } from 'lucide-react';
 import React from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
@@ -47,15 +47,7 @@ function UserNav() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/posts/new">
-            <PenSquare className="mr-2 h-4 w-4" />
-            <span>New Post</span>
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
         <DropdownMenuItem onClick={signOut}>
-          <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -64,7 +56,7 @@ function UserNav() {
 }
 
 export default function Header() {
-  const { user, signIn, loading } = useAuth();
+  const { user, loading } = useAuth();
 
   return (
     <header className="bg-background/50 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300 border-b border-transparent hover:shadow-lg hover:border-border">
@@ -84,15 +76,24 @@ export default function Header() {
             Write Space
           </Link>
         </div>
-        <nav className="flex-1 flex justify-end items-center">
+        <nav className="flex-1 flex justify-end items-center gap-2">
+          <Link href="/posts/new">
+            <Button variant="outline">
+                <PenSquare className="mr-2 h-4 w-4" />
+                New Post
+            </Button>
+          </Link>
           {loading ? (
-            <Skeleton className="h-10 w-24" />
+            <Skeleton className="h-10 w-10 rounded-full" />
           ) : user ? (
             <UserNav />
           ) : (
-            <Button onClick={signIn}>
-              Login
-            </Button>
+            <Link href="/login">
+                <Button>
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Login
+                </Button>
+            </Link>
           )}
         </nav>
       </div>
