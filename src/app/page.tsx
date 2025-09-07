@@ -12,6 +12,10 @@ export default async function Home() {
   return (
     <div className="relative scroll-smooth">
       <section id="welcome" className="h-screen flex flex-col items-center justify-center text-center p-4">
+        <div className="absolute top-0 left-0 w-full h-full z-[-1]">
+          <div className="absolute top-[10vh] left-[5vw] w-48 h-48 bg-primary/5 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute top-[50vh] right-[10vw] w-64 h-64 bg-accent/5 rounded-2xl blur-3xl animate-pulse delay-200"></div>
+        </div>
         <div className="bg-background/30 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10">
           <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4">
             <AnimatedSection animation="fade-in">
