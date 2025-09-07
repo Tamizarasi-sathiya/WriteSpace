@@ -45,13 +45,13 @@ export default async function Home() {
         <div className="absolute top-[150vh] right-[5vw] w-56 h-56 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
       
-      <ParallaxWrapper speed={-0.25}>
+      <ParallaxWrapper speed={-0.3}>
         <Feather className="w-24 h-24 text-primary/50 absolute top-[20vh] left-[15vw] z-10 opacity-30 -rotate-12 blur-sm" />
       </ParallaxWrapper>
       <ParallaxWrapper speed={-0.1}>
         <BookOpen className="w-32 h-32 text-accent/50 absolute top-[70vh] right-[20vw] z-10 opacity-30 rotate-12 blur-md" />
       </ParallaxWrapper>
-       <ParallaxWrapper speed={-0.3}>
+       <ParallaxWrapper speed={-0.4}>
         <PenTool className="w-28 h-28 text-primary/50 absolute top-[120vh] left-[10vw] z-10 opacity-30 rotate-6 blur-[3px]" />
       </ParallaxWrapper>
 
@@ -59,7 +59,7 @@ export default async function Home() {
         <ParallaxWrapper speed={-0.15}>
             <MadhubaniFlower className="w-32 h-32 absolute top-[15vh] right-[8vw] text-accent/80 opacity-15 rotate-[20deg]" />
         </ParallaxWrapper>
-        <ParallaxWrapper speed={-0.35}>
+        <ParallaxWrapper speed={-0.5}>
             <MadhubaniBird className="w-48 h-48 absolute top-[80vh] left-[5vw] text-primary/80 opacity-15 -rotate-[15deg] scale-x-[-1]" />
         </ParallaxWrapper>
       </div>
