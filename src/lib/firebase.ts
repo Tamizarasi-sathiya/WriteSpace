@@ -1,6 +1,6 @@
 
-import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
-import { getFirestore, Firestore } from "firebase/firestore/lite";
+import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
+import { getFirestore, type Firestore } from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,30 +11,27 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Ensure all config values are present before initializing
-const isConfigValid = Object.values(firebaseConfig).every(Boolean);
+// Check for missing environment variables and provide a more specific error.
+if (!firebaseConfig.projectId) {
+  throw new Error("Firebase Error: NEXT_PUBLIC_FIREBASE_PROJECT_ID is not defined. Please check your Vercel environment variables.");
+}
+if (!firebaseConfig.apiKey) {
+    throw new Error("Firebase Error: NEXT_PUBLIC_FIREBASE_API_KEY is not defined. Please check your Vercel environment variables.");
+}
+
 
 let app: FirebaseApp;
 let db: Firestore;
 
-if (isConfigValid) {
-  try {
-    app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-    db = getFirestore(app);
-  } catch (error) {
-    console.error("Firebase initialization failed:", error);
-    // In a server environment, re-throwing makes the build/render fail clearly.
-    if (typeof window === 'undefined') {
-      throw new Error("Server-side Firebase initialization failed.");
-    }
-  }
-} else {
-  console.error("Firebase config is missing or incomplete. Check your environment variables.");
-  if (typeof window === 'undefined') {
-    throw new Error("Server-side Firebase initialization failed due to missing environment variables.");
-  }
+try {
+  // Initialize Firebase
+  // This pattern prevents re-initializing the app on hot reloads.
+  app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  db = getFirestore(app);
+} catch (error) {
+  console.error("Firebase initialization failed:", error);
+  // Re-throw the error to ensure the server fails loudly instead of silently.
+  throw new Error("Failed to initialize Firebase. Please check your configuration and credentials.");
 }
 
-
-// @ts-ignore - db and app will be initialized if config is valid, otherwise it will throw.
 export { db, app };
