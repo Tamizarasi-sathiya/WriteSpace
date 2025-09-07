@@ -10,8 +10,10 @@ export default function Header() {
         <div className="flex-1 flex justify-start">
            <Link href="/suggest-topics" passHref>
             <Button variant="ghost">
-              <Lightbulb />
-              <span className="hidden sm:inline">Suggest Topics</span>
+              <span className="flex items-center gap-2">
+                <Lightbulb />
+                <span className="hidden sm:inline">Suggest Topics</span>
+              </span>
             </Button>
           </Link>
         </div>
@@ -23,8 +25,10 @@ export default function Header() {
         <nav className="flex-1 flex justify-end items-center">
           <Link href="/posts/new" passHref>
             <Button>
-              <PenSquare />
-              <span className="hidden sm:inline">New Post</span>
+              <span className="flex items-center gap-2">
+                <PenSquare />
+                <span className="hidden sm:inline">New Post</span>
+              </span>
             </Button>
           </Link>
         </nav>

@@ -25,10 +25,10 @@ function SubmitButton({ isEditing }: { isEditing: boolean }) {
 
     return (
         <Button type="submit" disabled={pending} className="w-full sm:w-auto">
-            <>
+            <span className="flex items-center gap-2">
                 <PenSquare className="h-4 w-4" />
                 {pending ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Post' : 'Create Post')}
-            </>
+            </span>
         </Button>
     )
 }
@@ -100,8 +100,10 @@ export default function PostForm({ post }: PostFormProps) {
         <CardFooter className="flex justify-between items-center">
             <Link href={isEditing ? `/posts/${post.id}` : '/'} passHref>
               <Button variant="ghost">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back
+                <span className="flex items-center gap-2">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back
+                </span>
               </Button>
             </Link>
           <SubmitButton isEditing={isEditing} />
