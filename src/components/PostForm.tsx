@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useFormStatus } from 'react-dom';
@@ -24,8 +25,10 @@ function SubmitButton({ isEditing }: { isEditing: boolean }) {
 
     return (
         <Button type="submit" disabled={pending} className="w-full sm:w-auto">
-            <PenSquare className="h-4 w-4" />
-            {pending ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Post' : 'Create Post')}
+            <>
+                <PenSquare className="h-4 w-4" />
+                {pending ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Post' : 'Create Post')}
+            </>
         </Button>
     )
 }
@@ -95,14 +98,12 @@ export default function PostForm({ post }: PostFormProps) {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between items-center">
-          <Button asChild variant="ghost">
             <Link href={isEditing ? `/posts/${post.id}` : '/'}>
-              <>
+              <Button variant="ghost">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back
-              </>
+              </Button>
             </Link>
-          </Button>
           <SubmitButton isEditing={isEditing} />
         </CardFooter>
       </Card>
