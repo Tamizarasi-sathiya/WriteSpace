@@ -84,12 +84,12 @@ export default async function Home() {
       </section>
 
       <section id="features" className="min-h-screen container mx-auto py-16 md:py-24 flex flex-col items-center justify-center">
-        <AnimatedSection animation="blur-in" className="text-center mb-12">
+        <AnimatedSection animation="slide-in-up" className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-bold mb-4">Why Write Space?</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">We provide the tools to make your blogging experience seamless and enjoyable.</p>
         </AnimatedSection>
         <div className="grid gap-8 md:grid-cols-3">
-            <AnimatedSection animation="blur-in" delay={0.1}>
+            <AnimatedSection animation="slide-in-up" delay={0.1}>
               <Card className="bg-card/80 backdrop-blur-md text-center h-full animated-gradient-border transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
                   <CardHeader>
                       <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
@@ -102,7 +102,7 @@ export default async function Home() {
                   </CardContent>
               </Card>
             </AnimatedSection>
-            <AnimatedSection animation="blur-in" delay={0.2}>
+            <AnimatedSection animation="slide-in-up" delay={0.2}>
               <Card className="bg-card/80 backdrop-blur-md text-center h-full animated-gradient-border transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
                   <CardHeader>
                       <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
@@ -115,7 +115,7 @@ export default async function Home() {
                   </CardContent>
               </Card>
             </AnimatedSection>
-            <AnimatedSection animation="blur-in" delay={0.3}>
+            <AnimatedSection animation="slide-in-up" delay={0.3}>
               <Card className="bg-card/80 backdrop-blur-md text-center h-full animated-gradient-border transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
                   <CardHeader>
                       <div className="mx-auto bg-primary/20 text-primary p-4 rounded-full w-fit mb-4">
@@ -135,7 +135,7 @@ export default async function Home() {
         {posts.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 container mx-auto">
             {posts.map((post, i) => (
-              <AnimatedSection key={post.id} animation="blur-in" delay={0.1 * (i + 1)}>
+              <AnimatedSection key={post.id} animation="slide-in-up" delay={0.1 * (i % 3)}>
                 <PostCard post={post} />
               </AnimatedSection>
             ))}
