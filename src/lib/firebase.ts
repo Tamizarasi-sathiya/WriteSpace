@@ -1,3 +1,4 @@
+
 import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
 import { getFirestore, Firestore } from "firebase/firestore/lite";
 
@@ -10,22 +11,22 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Ensure all config values are present
-const areConfigValuesPresent = Object.values(firebaseConfig).every(value => !!value);
-
 let app: FirebaseApp;
-let db: Firestore;
 
-if (areConfigValuesPresent) {
-  app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-  db = getFirestore(app);
+if (getApps().length === 0) {
+    if (Object.values(firebaseConfig).every(Boolean)) {
+        app = initializeApp(firebaseConfig);
+    } else {
+        console.error("Firebase config is missing or incomplete. Check your environment variables.");
+        // Throw an error during build/server-side execution if config is missing
+        if (typeof window === 'undefined') {
+            throw new Error("Server-side Firebase initialization failed due to missing environment variables.");
+        }
+    }
 } else {
-  console.error("Firebase config is missing or incomplete. Check your environment variables.");
-  // Provide dummy instances or handle the error as appropriate for your app
-  // This prevents the app from crashing during build if env vars are not set
-  app = {} as FirebaseApp;
-  db = {} as Firestore;
+    app = getApp();
 }
 
+const db: Firestore = getFirestore(app);
 
 export { db, app };

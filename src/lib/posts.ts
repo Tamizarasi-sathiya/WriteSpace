@@ -3,16 +3,7 @@ import { db } from './firebase';
 import { collection, getDocs, getDoc, doc, addDoc, updateDoc, deleteDoc, serverTimestamp, query, orderBy, limit, Timestamp } from 'firebase/firestore';
 import type { Post, PostFormData } from '@/types';
 
-// Helper to check if db is initialized
-const isDbInitialized = () => {
-    if (!db || typeof db.INTERNAL === 'undefined') {
-        console.error("Firestore is not initialized. Check your Firebase configuration.");
-        return false;
-    }
-    return true;
-};
-
-const postsCollection = isDbInitialized() ? collection(db, 'posts') : null;
+const postsCollection = collection(db, 'posts');
 
 // Helper to convert Firestore doc to Post object
 const fromFirestore = (doc: any): Post => {
@@ -27,7 +18,6 @@ const fromFirestore = (doc: any): Post => {
 };
 
 export async function getPosts(postLimit: number = 20): Promise<Post[]> {
-    if (!postsCollection) return [];
     try {
         const q = query(postsCollection, orderBy('createdAt', 'desc'), limit(postLimit));
         const snapshot = await getDocs(q);
@@ -39,7 +29,6 @@ export async function getPosts(postLimit: number = 20): Promise<Post[]> {
 }
 
 export async function getPost(id: string): Promise<Post | null> {
-    if (!isDbInitialized()) return null;
     try {
         const docRef = doc(db, 'posts', id);
         const docSnap = await getDoc(docRef);
@@ -57,7 +46,6 @@ export async function getPost(id: string): Promise<Post | null> {
 }
 
 export async function addPost(postData: PostFormData): Promise<string | null> {
-    if (!postsCollection) return null;
     try {
         const docRef = await addDoc(postsCollection, {
             ...postData,
@@ -71,7 +59,6 @@ export async function addPost(postData: PostFormData): Promise<string | null> {
 }
 
 export async function updatePost(id: string, postData: Partial<PostFormData>): Promise<boolean> {
-    if (!isDbInitialized()) return false;
     try {
         const docRef = doc(db, 'posts', id);
         await updateDoc(docRef, postData);
@@ -83,7 +70,6 @@ export async function updatePost(id: string, postData: Partial<PostFormData>): P
 }
 
 export async function deletePost(id: string): Promise<boolean> {
-    if (!isDbInitialized()) return false;
     try {
         const docRef = doc(db, 'posts', id);
         await deleteDoc(docRef);
